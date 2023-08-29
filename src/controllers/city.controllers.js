@@ -43,7 +43,7 @@ export const addCity = async(req, res)=>{
 
 
 export const removeCity = async(req, res)=>{
-    const {id} = req.query;
+    const {id} = req.params;
     try {
         const cityDelete = await cityModel.findByIdAndDelete(id);
 
@@ -59,7 +59,7 @@ export const removeCity = async(req, res)=>{
 }
 
 export const updateCity = async(req, res)=>{
-    const {id} = req.query;
+    const {id} = req.params;
     try {
         const cityUpdate = await cityModel.findByIdAndUpdate(id, req.body, {
             new: true // Exigimos la actualización del dato que se cargó en el body
