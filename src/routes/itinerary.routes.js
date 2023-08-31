@@ -1,11 +1,10 @@
 import {Router} from "express";
-
+import { addItinerary, getItineraries } from "../controllers/itinerary.controllers.js";
 const router = Router();
 
-router.get("/itinerary", getCitys) // listado de eventos
-router.get("/itinerary/:id", getCity) //evento especifico por medio de id
-router.post("/itinerary", addCity) // creacion de evento
-router.delete("/itinerary/:id", removeCity) // eliminacion de un evento
-router.put("/itinerary/:id", updateCity) // actualizacion de un evento
+router.get("/itinerary", getItineraries) 
+router.post("/itinerary", addItinerary) // creacion de itenerario
+//router.delete("/itinerary/:id", removeCity) // eliminacion de un itenerario
+//router.put("/itinerary/:id", updateCity) // actualizacion de un itenerario
 
 export default router
