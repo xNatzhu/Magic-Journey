@@ -11,7 +11,16 @@ export const getItineraries = async (req, res)=>{
         res.status(500).json({msg:"No se pudo buscar los itenerarios"})
     }
 }
-
+export const getItinerary = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const itinerarySearch = await itineraryModel.findById(id);
+       return  res.json(itinerarySearch); // Enviar el itinerario encontrado como respuesta
+        
+    } catch (error) {
+        res.status(500).json({ msg: "Hubo un problema al hacer la búsqueda del itinerario" });
+    }
+}
 
 export const addItinerary = async(req,res) =>{
     try {
@@ -22,5 +31,33 @@ export const addItinerary = async(req,res) =>{
         res.json(itineraryCreate);
     } catch (error) {
         res.status(500).json({msg:"No se pudo crear el Itinerario"})
+    }
+}
+
+export const removeItinerary = async(req, res)=>{
+    try {
+        const {id} = req.params
+        const itinerarySearch = await itineraryModel.findByIdAndDelete(id)
+        if(!itinerarySearch){
+            res.json({msg:"No se encontro ningun id para borrar"})
+        }
+        return res.json({ msg: "Se borró correctamente" });
+    } catch (error) {
+        res.status(500).json({msg:"No se pudo borrar"})
+    }
+}
+
+export const updateItinerary = async(req, res)=>{
+    try {
+        const {id} = req.params
+        const itinerarySearch = await itineraryModel.findByIdAndUpdate(id, req.body, {
+            new: true // Exigimos la actualización del dato que se cargó en el body
+        });
+        if(!itinerarySearch){
+            res.json({msg:"No se encontro ningun id para actualizar"})
+        }
+        return res.json({ msg: "Se actualizo correctamente" });
+    } catch (error) {
+        res.status(500).json({msg:"No se pudo actualizar"})
     }
 }
