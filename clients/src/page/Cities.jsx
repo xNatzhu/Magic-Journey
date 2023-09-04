@@ -1,14 +1,17 @@
-import axios from "axios";
-
-import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import {get_city}  from "../store/actions/city.js"
+import { useEffect } from "react";
 import CityCard from "../components/city/Card.jsx";
 import Form from "../components/search/Form.jsx";
 
 export default function Cities() {
-    const [listCity, setListCity] = useState([]);
-    
+
+    const dispatch = useDispatch();
+    const listCity = useSelector((state) => state.citiesReducer.city);
     useEffect(() => {
-        const urlCityApi = "http://localhost:3000/api/citys";
+        dispatch(get_city()) //vamos despachar la accion get City
+
+        /*const urlCityApi = "http://localhost:3000/api/citys";
         axios.get(urlCityApi) 
             .then(res => {
                 setListCity(res.data); // Actualizar el estado con los datos obtenidos
@@ -16,7 +19,8 @@ export default function Cities() {
             })
             .catch(error => {
                 console.error("Error fetching data:", error);
-            });
+            });*/
+
     }, []); // Dejar el array de dependencias vacío para que se ejecute solo una vez
 
     return (

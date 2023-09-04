@@ -2,7 +2,7 @@ import itineraryModel from "../models/itinerary.model.js";
 
 export const getItineraries = async (req, res)=>{
     try {
-        const itinerarySearch = await itineraryModel.find()
+        const itinerarySearch = await itineraryModel.find().populate("city")
         if(!itineraryModel){
             res.status(404).json({msg:"No se encontro en la base de datos itenerarios"})
         }
@@ -14,11 +14,12 @@ export const getItineraries = async (req, res)=>{
 export const getItinerary = async (req, res) => {
     try {
         const { id } = req.params;
-        const itinerarySearch = await itineraryModel.findById(id);
+        const itinerarySearch = await itineraryModel.findById(id).populate("city") // Puedes agregar .populate aquí si es necesario;
        return  res.json(itinerarySearch); // Enviar el itinerario encontrado como respuesta
         
     } catch (error) {
-        res.status(500).json({ msg: "Hubo un problema al hacer la búsqueda del itinerario" });
+        res.status(500).json({ msg: "Hubo un problema al hacer la búsqueda del itinerario"});
+        console.log(error);
     }
 }
 

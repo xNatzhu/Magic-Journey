@@ -1,8 +1,6 @@
 .background-slider{
-
     background-color: #212121cd; /* Color de fondo semi-transparente */
     backdrop-filter: blur(10px);
-
 }
 
 .background-slider::before {
@@ -14,4 +12,11 @@
     height: 100px; /* ajusta la altura del degradado según tu necesidad */
     background-image: linear-gradient(to bottom, rgba(0,0,0,0), #212121); /* ajusta el color aquí */
     z-index: 1;
+ }
+
+ .background-itinerary{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #212121;
+
  }

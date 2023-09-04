@@ -8,4 +8,4 @@ router.post("/itinerary", addItinerary) // creacion de itenerario
 router.delete("/itinerary/:id", removeItinerary) // eliminacion de un itenerario
 router.put("/itinerary/:id", updateItinerary) // actualizacion de un itenerario
 
-export default router
+export default router 
