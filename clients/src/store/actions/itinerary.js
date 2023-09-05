@@ -9,7 +9,7 @@ export const get_itinerary = createAsyncThunk("get_itinerary", async () => {
       const itinerary = await axios
         .get(urlItineraryApi)
         .then((res) => {
-          console.log(res.data);
+          console.log("Itinerary actions",res.data);
           return res.data;
         })
         .catch((error) => {

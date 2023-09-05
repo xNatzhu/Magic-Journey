@@ -32,6 +32,11 @@ const itinerarySchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    duration:{
+        type: Number,
+        required: true,
+        default: 0
+    },
     like: {
         type: Number,
         required: true,

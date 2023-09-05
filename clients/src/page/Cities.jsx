@@ -8,6 +8,7 @@ export default function Cities() {
 
     const dispatch = useDispatch();
     const listCity = useSelector((state) => state.citiesReducer.city);
+    
     useEffect(() => {
         dispatch(get_city()) //vamos despachar la accion get City
 
