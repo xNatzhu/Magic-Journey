@@ -1,7 +1,6 @@
 
 import userModel from "../models/user.model.js";
 import bcryptjs from "bcryptjs"
-
 export const signup = async(req, res)=>{
     try {
 
@@ -32,22 +31,34 @@ export const signIn = async (req, res)=>{
         const {email, password } = req.body
 
         const findUser = await userModel.findOne({email})
-        console.log("Probando",findUser);
-        
         if(!findUser){
             return res.status(400).json({msg:"Dato ingresado incorrecto"})
         }
 
         const passCompare = await bcryptjs.compare(password, findUser.password); 
-
         if(!passCompare){
             return res.status(400).json({msg:"Dato ingresado incorrecto"})
         }
 
-        console.log("comparacion", passCompare);
-        return res.send("Ingreso correctamente")
+        //generete token
 
-
+        res.status(200).json({
+            status:200,
+            msg: "Se ingreso correctamente",
+            token:{
+                token:req.token
+            },
+            user:{
+                id:findUser._id,
+                email:findUser.email,
+                name:findUser.name,
+                img: findUser.img,
+                country:findUser.country,
+                bio:findUser.bio,
+                role:findUser.rol
+            },
+        });
+        
     } catch (error) {
         console.log(error);
         res.status(500).json({ msg: "Hubo un problema al ingresar a la cuenta"});
