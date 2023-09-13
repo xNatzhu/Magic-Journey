@@ -6,6 +6,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Cities from './page/Cities.jsx'
 import Detail from './page/Detail.jsx'
 import Search from './page/Search.jsx'
+import Login from './components/login/Login.jsx'
 function App() {
   return (
     <BrowserRouter>
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}></Route>
         <Route path="/cities" element={<Cities/>}></Route>
+        <Route path="/login" element={<Login/>}></Route>
         <Route path="/city/:id" element={<Detail/>}></Route>
         <Route path="/search/:keywords" element={<Search/>}></Route>
       </Routes>

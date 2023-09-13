@@ -11,17 +11,6 @@ export default function Cities() {
     
     useEffect(() => {
         dispatch(get_city()) //vamos despachar la accion get City
-
-        /*const urlCityApi = "http://localhost:3000/api/citys";
-        axios.get(urlCityApi) 
-            .then(res => {
-                setListCity(res.data); // Actualizar el estado con los datos obtenidos
-                console.log(res.data);
-            })
-            .catch(error => {
-                console.error("Error fetching data:", error);
-            });*/
-
     }, []); // Dejar el array de dependencias vacío para que se ejecute solo una vez
 
     return (

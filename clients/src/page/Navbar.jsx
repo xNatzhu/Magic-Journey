@@ -68,9 +68,12 @@ const Navbar = () => {
               Cities
         </NavLink>
           <div className="inline-flex items-center gap-2 list-none lg:ml-auto">
-            <button className="items-center block px-10 py-3 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-[#9DC08B] rounded-xl hover:bg-[#9DC08B] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9DC08B]">
-             Login
-            </button>
+            <NavLink
+              className="items-center block px-10 py-3 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-[#9DC08B] rounded-xl hover:bg-[#9DC08B] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9DC08B]"
+              to="/login"
+            >
+              Login
+            </NavLink>
           </div>
         </nav>
       </div>
