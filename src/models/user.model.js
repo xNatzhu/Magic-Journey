@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     },
     country:{
         type:String,
-        required:true,
+        default:"none"
     },
     img:{
         type:String,
