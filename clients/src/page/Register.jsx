@@ -10,7 +10,7 @@ function Register() {
           <div className="absolute bg-black opacity-60 inset-0 z-0"></div>
         </div>
         <div className="w-full py-6 z-20">
-          <h1 className="my-6 text-5xl font-bold  tracking-wide">
+          <h1 className="my-6 text-5xl font-bold  tracking-wide pt-[20px]">
             Mytinerary
           </h1>
         <FormRegister/>

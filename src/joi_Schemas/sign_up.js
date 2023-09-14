@@ -9,7 +9,7 @@ const signupSchema = Joi.object({
             max: 26,
             lowerCase: 0,
             upperCase: 0,
-            numeric: 1,
+            numeric: 0,
             symbol: 0,
             requirementCount: 2,
           }
