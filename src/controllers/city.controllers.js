@@ -10,6 +10,30 @@ import cityModel from "../models/city.model.js";
     }
 }
 
+
+export const getCityImgSlider = async (req, res) => {
+    try {
+        const citySearch = await cityModel.find();
+        const countryObj = {};
+
+        citySearch.forEach((city) => {
+            const { country } = city;
+
+            if (!countryObj[country]) {
+                countryObj[country] = [];
+            }
+            countryObj[country].push(city);
+        });
+
+        res.json(countryObj); // Debes responder con countryObj en lugar de formattedCountryObj
+
+        console.log(countryObj);
+    } catch (error) {
+        res.status(500).json({ error: "Error al obtener las ciudades" });
+    }
+}
+
+
 export const getCity = async (req, res) => {
     try {
         const { id } = req.params;

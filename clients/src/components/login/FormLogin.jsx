@@ -24,7 +24,6 @@ function FormLogin() {
         email,
         password,
       })
-
       .then((data) => {
         console.log("Cuenta creada perfecto");
         console.log(data);
