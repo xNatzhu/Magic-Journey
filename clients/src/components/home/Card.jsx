@@ -2,7 +2,7 @@ function Card(props) {
   return (
     <div className="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-[#303030]  bg-clip-border text-gray-50 shadow-md  mx-3 mt-3 mb-3">
       <div className="relative mx-4 mt-4 overflow-hidden rounded-xl bg-blue-gray-500 bg-clip-border text-white shadow-lg shadow-blue-gray-500/40">
-        <img src={props.city.img} alt="ui/ux review check" />
+        <img src={props.city.img} alt="" />
 
 
       </div>
