@@ -39,16 +39,14 @@ export default function Carrrusel() {
             carouselItem.map((city, index) => <Card key={index} city={city} />)}
         </div>
       </div>
-
-
-      <div className="flex fixed left-1 top-0 z-5 h-full items-center">
-  <ul className="bg-[#161616] px-[10px] pt-[10px] pb-[10px] rounded-lg">
+      <div className="flex md:fixed pb-[10px] md:pb-[0px]  bg-[#212121] md:bg-transparent w-full  md:w-[30px]  md:left-1 md:top-0 z-5 h-full items-center justify-center cursor-pointer relative">
+  <ul className="bg-transparent  px-[10px] pt-[10px] pb-[10px] rounded-lg text-center flex md:flex-col">
     {uniqueKeys.map((country, index) => {
       const isSelected = index === selectedItemIndex;
       return (
         <li
           onClick={() => handleItem(index)}
-          className="list-none pt-[5px] pb-[5px] text-[#9DC08B] mb-[10px]"
+          className="list-none px-[10px]  md:px-[0px] md:pt-[5px] md:pb-[5px] text-[#9DC08B] mb-[10px]"
           key={index}
         >
           {isSelected ? (
@@ -79,6 +77,10 @@ export default function Carrrusel() {
     })}
   </ul>
 </div>
+
+
+
+
 
     </>
   );
