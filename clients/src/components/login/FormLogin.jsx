@@ -2,58 +2,33 @@ import "./css/Login.css";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
-function FormLogin() {
-  const [token, setToken] = useState(sessionStorage.getItem("token"));
+import { useDispatch, useSelector } from 'react-redux';
+import { post_user } from "../../store/actions/login.js"; 
 
+function FormLogin() {
+  const [token, setToken] = useState(sessionStorage.getItem("token"))
+  
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset
   } = useForm()
+  
   const navigate = useNavigate();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data)=> {
     const { password, email } = data;
     console.log(errors);
-    axios
-      .post("http://localhost:3000/api/signin", {
-        email,
-        password,
-      })
-      .then((data) => {
-        console.log("Cuenta creada perfecto");
-        console.log(data);
-        Swal.fire({
-          background: "#161616",
-          color: "#fff",
-          title: "¡Bienvenido!",
-          text: "Disfruta de tu estancia",
-          icon: "success",
-          iconColor: "#9DC08B",
-          confirmButtonText: "Ok",
-          confirmButtonColor: "#9DC08B",
-        });
-        sessionStorage.setItem("token", data.data.token);
-        console.log(data.data.token);
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
-        Swal.fire({
-          background: "#161616",
-          color: "#fff",
-          title: "Error!",
-          text: "Los datos ingresados son incorrectos",
-          icon: "error",
-          confirmButtonText: "Ok",
-          confirmButtonColor: "#9DC08B",
-        });
+    try {
+      dispatch(post_user({ email, password}));
+      reset();
+      navigate("/");
+    } catch (error) {
         reset();
-      });
+    }
   };
 
   useEffect(() => {

@@ -1,20 +1,28 @@
 import "./css/Navbar.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [token, setToken] = useState(sessionStorage.getItem("token"));
+  
+  const dataToken = sessionStorage.getItem("token")
+
+
   const toggleOpen = () => {
     setOpen(!open);
   };
-
-  const outToken = ()=>{
-    setToken(sessionStorage.clear());
-    console.log(token);
-  }
+  useEffect(()=>{
+    setToken(dataToken)
+    console.log(dataToken);
+  },[dataToken])
   
+  const outToken = () => {
+    sessionStorage.removeItem("token");
+    setToken("");
+  };
+
   return (
     <div className={!open ? "menu-conteiner" : "menu-conteiner-open"}>
       <div className="flex flex-col max-w-screen-xl p-5 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
@@ -77,16 +85,14 @@ const Navbar = () => {
                 to="/login"
                 onClick={outToken}
               >
-                Cerrar Seccion
+                Cerrar Sesión
               </NavLink>
             ) : (
               <NavLink
                 className="items-center block px-10 py-3 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-[#9DC08B] rounded-xl hover:bg-[#9DC08B] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9DC08B]"
-                onClick={outToken}
                 to="/login"
-
               >
-                Ingresar
+                Iniciar Sesión
               </NavLink>
             )}
           </div>
