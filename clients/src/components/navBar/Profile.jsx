@@ -8,15 +8,8 @@ function Profile({ outToken }) {
   const dataToken = sessionStorage.getItem("token");
   const user = useSelector((state) => state.userReducer.user);
 
-
-  console.log("probando los datos recibidos", user);
-  console.log("probando los datos recibidos", user.user.name);
-  console.log("probando los datos recibidos", user.token.token);
-
-  console.log(dataToken);
   useEffect(() => {
     setToken(dataToken);
-    console.log("Probando", token);
   }, [dataToken]);
 
   useEffect(() => {

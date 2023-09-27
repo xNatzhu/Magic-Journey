@@ -20,7 +20,6 @@ const initialStore = {
 const userReducer = createReducer(initialStore, (builder)=>{
     return builder.addCase(post_user.fulfilled,(state,action)=>{
         const newState ={...state, user:action.payload}
-        console.log("redux reducer",newState);
         return newState
     })
 

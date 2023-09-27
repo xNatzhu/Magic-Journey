@@ -2,6 +2,7 @@ import './App.css'
 import Footer from './page/Footer.jsx'
 import Home from './page/Home.jsx'
 import Navbar from './page/Navbar.jsx'
+import { useEffect } from 'react'
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Cities from './page/Cities.jsx'
 import Detail from './page/Detail.jsx'
@@ -10,6 +11,10 @@ import Login from './page/Login.jsx'
 import Register from './page/Register.jsx'
 
 function App() {
+  useEffect(() => {
+      sessionStorage.clear()
+      console.log("estoy viendo que sucede");
+  }, []);
   return (
     <BrowserRouter>
       <Navbar/>

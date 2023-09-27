@@ -10,7 +10,6 @@ export const post_user = createAsyncThunk("post_user", async ({ email, password 
       password
     });
     const data = response.data;
-    console.log("esto proviene del action", data);
     sessionStorage.setItem("token",data.token.token)
     
     Swal.fire({
