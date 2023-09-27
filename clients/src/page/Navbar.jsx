@@ -2,22 +2,14 @@ import "./css/Navbar.css";
 
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import Profile from "../components/navBar/Profile.jsx";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const [token, setToken] = useState(sessionStorage.getItem("token"));
-  
-  const dataToken = sessionStorage.getItem("token")
-
 
   const toggleOpen = () => {
     setOpen(!open);
   };
-  useEffect(()=>{
-    setToken(dataToken)
-    console.log(dataToken);
-  },[dataToken])
-  
   const outToken = () => {
     sessionStorage.removeItem("token");
     setToken("");
@@ -79,22 +71,7 @@ const Navbar = () => {
             Ciudades
           </NavLink>
           <div className="inline-flex items-center gap-2 list-none lg:ml-auto">
-            {token ? (
-              <NavLink
-                className="items-center block px-10 py-3 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-[#9DC08B] rounded-xl hover:bg-[#9DC08B] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9DC08B]"
-                to="/login"
-                onClick={outToken}
-              >
-                Cerrar Sesión
-              </NavLink>
-            ) : (
-              <NavLink
-                className="items-center block px-10 py-3 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-[#9DC08B] rounded-xl hover:bg-[#9DC08B] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9DC08B]"
-                to="/login"
-              >
-                Iniciar Sesión
-              </NavLink>
-            )}
+              <Profile outToken={outToken} />
           </div>
         </nav>
       </div>
