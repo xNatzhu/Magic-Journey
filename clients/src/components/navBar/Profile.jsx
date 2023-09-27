@@ -22,7 +22,7 @@ function Profile({ outToken }) {
   };
 
   return (
-    <div>
+    <div className="">
       {token ? (
         <div className="relative inline-block text-left">
           <button
@@ -36,14 +36,14 @@ function Profile({ outToken }) {
               alt="User dropdown"
               className="w-10 h-10 rounded-full"
             />
-            <span className="text-gray-900 dark:text-white">
+            <span className="text-gray-900 dark:text-white hidden md:flex">
             {user.user.name}
             </span>
           </button>
           {isDropdownOpen && (
             <div
               id="userDropdown"
-              className="z-10 absolute mt-2 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-[#202020] dark:divide-gray-600"
+              className="z-10 absolute top-30 right-1 bg-white divide-y divide-gray-100 rounded-lg shadow w-40 dark:bg-[#202020] dark:divide-gray-600"
             >
               <ul
                 className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -68,11 +68,11 @@ function Profile({ outToken }) {
               </ul>
               <div className="py-1">
                 <NavLink
-                  to="/"
+                  to="/login"
                   onClick={outToken}
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                 >
-                  Sign out
+                  Cerrar Sesión
                 </NavLink>
               </div>
             </div>
@@ -81,9 +81,9 @@ function Profile({ outToken }) {
       ) : (
         <NavLink
           to="/login"
-          className="items-center block px-10 py-3 text-base font-medium text-center text-white transition duration-500 ease-in-out transform bg-[#9DC08B] rounded-xl hover:bg-[#9DC08B] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#9DC08B]"
+          className="items-center block px-5 py-2 text-sm font-medium text-center text-white transition duration-500 ease-in-out transform bg-[#9DC08B] rounded-xl hover:bg-[#9DC08B] focus:outline-none"
         >
-          Iniciar Sesión
+          Ingresar
         </NavLink>
       )}
     </div>

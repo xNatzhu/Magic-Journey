@@ -1,7 +1,7 @@
 import "./css/Navbar.css";
 
-import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { useState } from "react";
+import { NavLink, Link } from "react-router-dom";
 import Profile from "../components/navBar/Profile.jsx";
 
 const Navbar = () => {
@@ -12,21 +12,14 @@ const Navbar = () => {
   };
   const outToken = () => {
     sessionStorage.removeItem("token");
-    setToken("");
   };
 
   return (
-    <div className={!open ? "menu-conteiner" : "menu-conteiner-open"}>
+    <div className={`fixed top-0 left-0 w-full ${!open ? "menu-conteiner" : "menu-conteiner-open"}`}>
       <div className="flex flex-col max-w-screen-xl p-5 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div className="flex flex-row items-center justify-between lg:justify-start">
-          <a
-            className="text-lg font-bold tracking-tighter text-[#9DC08B] transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8"
-            href="/groups/header/"
-          >
-            xNatzhu
-          </a>
           <button
-            className="rounded-lg md:hidden focus:outline-none focus:shadow-outline"
+            className="rounded-lg flex md:hidden focus:outline-none focus:shadow-outline "
             onClick={toggleOpen}
           >
             <svg
@@ -48,6 +41,21 @@ const Navbar = () => {
               ></path>
             </svg>
           </button>
+
+          <Link
+            className={`text-lg font-bold tracking-tighter text-[#9DC08B] transition duration-500 ease-in-out transform tracking-relaxed lg:pr-8 ${
+              open ? "hidden" : "flex"
+            }`}
+            to="/"
+          >
+            xNatzhu
+          </Link>
+
+          <div className={`flex md:hidden ${
+              open ? "hidden" : "flex"
+            } `}>
+            <Profile outToken={outToken} />
+          </div>
         </div>
 
         <nav
@@ -70,8 +78,8 @@ const Navbar = () => {
           >
             Ciudades
           </NavLink>
-          <div className="inline-flex items-center gap-2 list-none lg:ml-auto">
-              <Profile outToken={outToken} />
+          <div className="items-center gap-2 list-none lg:ml-auto hidden md:inline-flex">
+            <Profile outToken={outToken} />
           </div>
         </nav>
       </div>
