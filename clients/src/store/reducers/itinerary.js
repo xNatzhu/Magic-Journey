@@ -21,11 +21,11 @@ const itineraryReducer = createReducer(initialStore, (builder)=>{
     // 1. Primero recibe un accion
     // 2. Que va realizar para modificar mi estado inicial
 
-    return builder.addCase(get_itinerary.fulfilled,(state,action)=>{
-        const newState ={...state, itinerary:action.payload.itinerary}
-
-        return newState
-    })
+    return builder.addCase(get_itinerary.fulfilled, (state, action) => {
+        state.itinerary = action.payload; // Actualiza directamente la matriz de itinerarios en el estado
+        console.log(action.payload);
+        console.log(initialStore);
+      });      
 
 })
 

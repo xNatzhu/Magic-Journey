@@ -62,3 +62,43 @@ export const updateItinerary = async(req, res)=>{
         res.status(500).json({msg:"No se pudo actualizar"})
     }
 }
+
+
+
+export const likeItinerary = async(itineraryId, userId) => {
+    try {
+        const itinerary = await itineraryModel.findById(itineraryId);
+        if (!itinerary) {
+            return;
+        }
+        const alreadyLiked = itinerary.likes.some(like => like.user.equals(userId));
+        if (!alreadyLiked) {
+            itinerary.likes.push({ user: userId });
+        } else {
+            itinerary.likes = itinerary.likes.filter(like => !like.user.equals(userId));
+        }
+        
+        await itinerary.save();
+
+    } catch (error) {
+       
+    }
+};
+
+
+export const itineraryforcity = async (req, res) => {
+    const { idCity } = req.params;
+
+    try {
+        const itinerarySearch = await itineraryModel.find({ city: idCity }).populate("city");
+        if (itinerarySearch.length === 0) {
+            return res.json({ msg: "No se encontraron itinerarios para esta ciudad" });
+        }
+
+        res.json(itinerarySearch);
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ msg: "Hubo un problema", error });
+    }
+}

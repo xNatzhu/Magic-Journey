@@ -2,44 +2,41 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { get_itinerary } from "../store/actions/itinerary";
+import { get_itinerary } from "../store/actions/itinerary.js";
 
 import "./css/Detail.css";
 
 export default function Detail() {
   const { id } = useParams();
   const [city, setCity] = useState([]);
+  const [itinerary, setItinerary] = useState([])
   const dispatch = useDispatch();
   const listItinerary = useSelector(
-    (state) => state.itineraryReducer.itinerary
+    (state) => state.itineraryReducer.itinerary || []
   );
-  const [filteredItinerary, setFilteredItinerary] = useState([]);
 
+  console.log("dd", listItinerary);
   useEffect(() => {
     const urlCityApi = "http://localhost:3000/api/city/" + id;
     axios
       .get(urlCityApi)
       .then((res) => {
-        setCity(res.data); // Actualizar el estado con los datos obtenidos
+        setCity(res.data); 
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }, []);
 
-  useEffect(() => {
-    dispatch(get_itinerary());
-  }, []);
 
   useEffect(() => {
-    if (listItinerary.length > 0) {
-      const filterItinerary = listItinerary.filter(
-        (itinerary) => itinerary.city._id === id
-      );
-      setFilteredItinerary(filterItinerary);
-      console.log(listItinerary);
-    }
-  }, [listItinerary, id]);
+    dispatch(get_itinerary(id));
+  }, []);
+
+  useEffect(()=>{
+    setItinerary(listItinerary)
+  },[listItinerary])
+
 
   return (
     <>
@@ -80,7 +77,7 @@ export default function Detail() {
         </div>
       </div>
       <div className="bg-[#212121] pb-[20px] pt-[10px] flex items-center justify-center ">
-        {filteredItinerary.map((element) => (
+        {itinerary.map((element) => (
           <article
             key={element._id}
             className="rounded-lg border border-[#303030] bg-[#303030] p-4 shadow-sm transition hover:shadow-lg sm:p-6 mx-[40px]"

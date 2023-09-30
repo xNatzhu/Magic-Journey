@@ -37,11 +37,12 @@ const itinerarySchema = new mongoose.Schema({
         required: true,
         default: 0
     },
-    like: {
-        type: Number,
-        required: true,
-        default: 0
-    },
+    likes: [{
+        user: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "user"
+        }
+    }],
 }, {
     timestamps: true
 });
