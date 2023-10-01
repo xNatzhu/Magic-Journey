@@ -15,16 +15,8 @@ const initialStore = {
 }
 
 const itineraryReducer = createReducer(initialStore, (builder)=>{
-//esta es un constructor que va relacionar acciones al reductor.
-    //addCase es la accion que queremos añadir al reducer.  Es un metodo que recibe dos parametros
-
-    // 1. Primero recibe un accion
-    // 2. Que va realizar para modificar mi estado inicial
-
     return builder.addCase(get_itinerary.fulfilled, (state, action) => {
-        state.itinerary = action.payload; // Actualiza directamente la matriz de itinerarios en el estado
-        console.log(action.payload);
-        console.log(initialStore);
+        state.itinerary = action.payload; 
       });      
 
 })

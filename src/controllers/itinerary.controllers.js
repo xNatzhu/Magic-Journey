@@ -64,25 +64,29 @@ export const updateItinerary = async(req, res)=>{
 }
 
 
+export const likeItinerary = async (req, res) => {
+  const { userId, itineraryId } = req.body;
 
-export const likeItinerary = async(itineraryId, userId) => {
-    try {
-        const itinerary = await itineraryModel.findById(itineraryId);
-        if (!itinerary) {
-            return;
-        }
-        const alreadyLiked = itinerary.likes.some(like => like.user.equals(userId));
-        if (!alreadyLiked) {
-            itinerary.likes.push({ user: userId });
-        } else {
-            itinerary.likes = itinerary.likes.filter(like => !like.user.equals(userId));
-        }
-        
-        await itinerary.save();
+  try {
+    const itinerary = await itineraryModel.findById(itineraryId);
 
-    } catch (error) {
-       
+    if (!itinerary) {
+      return res.status(404).json({ error: 'Itinerary not found.' });
     }
+
+    const alreadyLiked = itinerary.likes.some((like) => like.user.equals(userId));
+    if (!alreadyLiked) {
+      itinerary.likes.push({ user: userId });
+    } else {
+      itinerary.likes = itinerary.likes.filter((like) => !like.user.equals(userId));
+    }
+    await itinerary.save();
+    return res.json(itinerary)
+    
+  } catch (error) {
+    console.error('Error in likeItinerary:', error);
+    return res.status(500).json({ error: 'Internal server error.' });
+  }
 };
 
 

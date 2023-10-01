@@ -15,7 +15,6 @@ export default function Detail() {
     (state) => state.itineraryReducer.itinerary || []
   );
 
-  console.log("dd", listItinerary);
   useEffect(() => {
     const urlCityApi = "http://localhost:3000/api/city/" + id;
     axios
