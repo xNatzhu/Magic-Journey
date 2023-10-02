@@ -66,7 +66,8 @@ export const updateItinerary = async(req, res)=>{
 
 export const likeItinerary = async (req, res) => {
   const { userId, itineraryId } = req.body;
-
+    console.log(userId);
+    console.log(itineraryId);
   try {
     const itinerary = await itineraryModel.findById(itineraryId);
 
@@ -82,7 +83,7 @@ export const likeItinerary = async (req, res) => {
     }
     await itinerary.save();
     return res.json(itinerary)
-    
+
   } catch (error) {
     console.error('Error in likeItinerary:', error);
     return res.status(500).json({ error: 'Internal server error.' });

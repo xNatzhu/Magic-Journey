@@ -10,7 +10,8 @@ const initialStore = {
         img:"",
         description:"",
         price:"",
-        like:""
+        like:"",
+        likes:[]
     }]
 }
 
