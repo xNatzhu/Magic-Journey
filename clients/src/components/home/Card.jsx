@@ -1,3 +1,4 @@
+import {Link } from "react-router-dom";
 function Card(props) {
   return (
     <div className="relative flex w-full max-w-[26rem] flex-col rounded-xl bg-[#303030]  bg-clip-border text-gray-50 shadow-md  mx-3 mt-3 mb-3">
@@ -19,13 +20,14 @@ function Card(props) {
         </p>
       </div>
       <div className="p-6 pt-3">
-        <button
+        <Link
+          to={`/city/${props.city.id}`}
           className="block w-full select-none rounded-lg bg-[#9DC08B] py-3.5 px-7 text-center align-middle font-sans text-sm font-bold uppercase text-white shadow-md  transition-all hover:shadow-lg  focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
           type="button"
           data-ripple-light="true"
         >
           Ir a ciudad
-        </button>
+        </Link>
       </div>
     </div>
   );

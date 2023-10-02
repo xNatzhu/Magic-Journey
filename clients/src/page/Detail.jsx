@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { get_itinerary } from "../store/actions/itinerary.js";
-
 import "./css/Detail.css";
+import  Menu  from "../components/city/Menu.jsx";
 
 export default function Detail() {
   const { id } = useParams();
@@ -30,8 +30,6 @@ export default function Detail() {
 
   const onLike = (itineraryId) => {
     const urlLike = "http://localhost:3000/api/like";
-    console.log("user", userId);
-    console.log("itinerary", itineraryId);
     axios
       .post(urlLike, {
         userId,
@@ -45,6 +43,7 @@ export default function Detail() {
         console.error("Error fetching data:", error);
       });
   };
+  
   useEffect(() => {
     dispatch(get_itinerary(id));
   }, []);
@@ -58,14 +57,17 @@ export default function Detail() {
       <div style={{ backgroundImage: `url(${city.img})` }}>
         <div className="background-slider pt-[30px]">
           <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:px-12 lg:px-24 lg:py-24">
+          <Menu name={city.name}/>
             <div className="flex flex-wrap items-center mx-auto max-w-7xl">
               <div className="w-full lg:max-w-lg lg:w-1/2 rounded-xl">
                 <div>
                   <div className="relative w-full max-w-lg">
+                  
                     <div className="absolute top-0 rounded-full -left-4 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
 
                     <div className="absolute rounded-full  -bottom-24 right-20 w-72 h-72 mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
                     <div className="relative">
+                    
                       <img
                         className="object-cover object-center mx-auto rounded-lg shadow-2xl"
                         alt="hero"
@@ -185,7 +187,7 @@ export default function Detail() {
                 </p>
               </span>
             </div>
-
+{/*
             <a
               href="#"
               className="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-[#9DC08B]"
@@ -198,6 +200,7 @@ export default function Detail() {
                 &rarr;
               </span>
             </a>
+              */ }
           </article>
         ))}
       </div>

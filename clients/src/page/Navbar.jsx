@@ -3,15 +3,18 @@ import "./css/Navbar.css";
 import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import Profile from "../components/navBar/Profile.jsx";
-
+import { useDispatch} from "react-redux";
+import { loginOut } from "../store/actions/loginOut.js";
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-
+  const dispatch = useDispatch();
+  
   const toggleOpen = () => {
     setOpen(!open);
   };
   const outToken = () => {
     sessionStorage.removeItem("token");
+    dispatch(loginOut());
   };
 
   return (
