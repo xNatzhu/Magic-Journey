@@ -5,7 +5,6 @@ import CityCard from "../components/city/Card.jsx";
 import Form from "../components/search/Form.jsx";
 
 export default function Cities() {
-    const [token, setToken] = useState(sessionStorage.getItem("token"));
     const dispatch = useDispatch();
     const listCity = useSelector((state) => state.citiesReducer.city);
     const [cities, setCities] = useState([]);

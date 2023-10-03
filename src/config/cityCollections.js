@@ -41,7 +41,7 @@ const createCities = async () => {
             {
                 name: "Lyon",
                 country: "Francia",
-                img: "https://familiasactivas.com/wp-content/uploads/2017/07/lyon-francia.png",
+                img: "https://cdn.porelmundo.viajes/wp-content/uploads/2023/05/lyon-1.jpg",
                 description: "Lyon, en el este de Francia, es famosa por su exquisita gastronomía y su arquitectura histórica. Considerada la capital culinaria de Francia, Lyon ofrece mercados coloridos, restaurantes tradicionales y un casco antiguo encantador."
             },
             {
@@ -65,7 +65,7 @@ const createCities = async () => {
             {
                 name: "Florencia",
                 country: "Italia",
-                img: "https://viajaleaks.com/wp-content/uploads/2020/02/Que-ver-cerca-de-Florencia-p.png",
+                img: "https://planetofhotels.com/guide/sites/default/files/styles/paragraph__live_banner__lb_image__1880bp/public/live_banner/Florence_3.jpg",
                 description: "Florencia, en el corazón de Italia, es famosa por ser el epicentro del Renacimiento. Sus museos, galerías de arte y la imponente catedral de Santa Maria del Fiore son algunas de las atracciones más destacadas."
             },
             {
@@ -83,7 +83,7 @@ const createCities = async () => {
             {
                 name: "Los Angeles",
                 country: "Estados Unidos",
-                img: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Los_Angeles_with_Mount_Baldy.jpg/1200px-Los_Angeles_with_Mount_Baldy.jpg",
+                img: "https://res.cloudinary.com/hello-tickets/image/upload/c_limit,f_auto,q_auto,w_1300/v1666660759/gyqh3ury1syfpiseejco.jpg",
                 description: "Los Ángeles, en California, es famosa por ser el epicentro de la industria del entretenimiento. Con sus playas, el Paseo de la Fama de Hollywood y la cultura relajada de California, la ciudad ofrece una mezcla única de glamour y estilo de vida relajado."
             },
             {
