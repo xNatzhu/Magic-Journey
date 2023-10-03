@@ -2,6 +2,7 @@ import { useState, useEffect} from "react";
 import { useParams } from 'react-router-dom';
 import axios from "axios";
 import CityCard from "../components/city/Card.jsx";
+import Menu from "../components/city/Menu.jsx";
 export default function Search() {
     const {keywords} = useParams();
     const [listCity, setListCity] = useState([]);
@@ -33,7 +34,10 @@ export default function Search() {
         }
       }, [keywords, listCity]);
     return (
-        <>
+
+        <div className="w-full h-screen pt-[80px] bg-[#212121]">
+        <Menu name={keywords}/>
+
             {filterCity.length === 0 ? (
                 <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8 bg-[#212121] w-screen h-screen pt-[120px]">
                 <div className="mx-auto max-w-lg">
@@ -61,7 +65,8 @@ export default function Search() {
                     ))}
                 </div>
             )}
-        </>
+
+         </div>
     );
     
 }

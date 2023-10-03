@@ -13,7 +13,6 @@ import Register from './page/Register.jsx'
 function App() {
   useEffect(() => {
       sessionStorage.clear()
-      console.log("estoy viendo que sucede");
   }, []);
   return (
     <BrowserRouter>
@@ -25,9 +24,7 @@ function App() {
         <Route path="/register" element={<Register/>}></Route>
         <Route path="/city/:id" element={<Detail/>}></Route>
         <Route path="/search/:keywords" element={<Search/>}></Route>
-        
       </Routes>
-      
       <Footer/>
     </BrowserRouter>
   )

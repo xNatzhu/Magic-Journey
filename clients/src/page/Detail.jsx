@@ -27,6 +27,14 @@ export default function Detail() {
         console.error("Error fetching data:", error);
       });
   }, []);
+  
+  useEffect(() => {
+    dispatch(get_itinerary(id));
+  }, []);
+
+  useEffect(() => {
+    setItinerary(listItinerary);
+  }, [listItinerary]);
 
   const onLike = (itineraryId) => {
     const urlLike = "http://localhost:3000/api/like";
@@ -43,14 +51,6 @@ export default function Detail() {
         console.error("Error fetching data:", error);
       });
   };
-  
-  useEffect(() => {
-    dispatch(get_itinerary(id));
-  }, []);
-
-  useEffect(() => {
-    setItinerary(listItinerary);
-  }, [listItinerary]);
 
   return (
     <>

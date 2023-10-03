@@ -1,14 +1,6 @@
-import {useNavigate}  from "react-router-dom"
 import "./css/Form.css"
-export default function Form() {
-    const navigate = useNavigate();
-
-    const submitHandler = (e)=>{
-        e.preventDefault()
-        const keyword = e.currentTarget.keyword.value.trim()
-        console.log(keyword);
-        navigate("/search/"+keyword)
-    }
+export default function Form({onSearch}) {
+    
     return(
       <div className="background-form">
         <div className="effect-form">
@@ -25,7 +17,6 @@ export default function Form() {
               <form
                 action=""
                 className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
-                onSubmit={submitHandler}
               >
                 <div>
                   <label htmlFor="text" className="sr-only">Search</label>
@@ -36,6 +27,7 @@ export default function Form() {
                       className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                       placeholder="Cordoba"
                       name="keyword"
+                      onChange={(event) => onSearch(event.target.value)}
                     />
       
                     <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
