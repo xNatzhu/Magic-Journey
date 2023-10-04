@@ -5,11 +5,9 @@ import "./css/Home.css"
 export default function Home() {
     return(
         <>
-        <Loading/>
         <div className="background-home">
             <Slider/>
             <Carrrusel/>
-            <Loading/>
         </div>
       </>
     );

@@ -51,7 +51,7 @@ const Navbar = () => {
             }`}
             to="/"
           >
-            xNatzhu
+            Magic Journey
           </Link>
 
           <div className={`flex md:hidden ${

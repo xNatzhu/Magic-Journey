@@ -34,7 +34,6 @@ export default function Cities() {
     };
     return (
       <>
-        <Loading/>
         <div className="pt-[80px] bg-[#212121]">
             <Form onSearch={onSearch} onClear={clearSearch}/>
             {filteredCities.map((city) => (
