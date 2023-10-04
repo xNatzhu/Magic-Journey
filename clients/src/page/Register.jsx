@@ -14,7 +14,7 @@ function Register() {
         </div>
         <div className="w-full py-6 z-20">
           <h1 className="my-6 text-5xl font-bold  tracking-wide pt-[20px]">
-            Mytinerary
+          Magic Journey
           </h1>
         <FormRegister/>
         </div>
