@@ -37,12 +37,6 @@ export default function Form({onSearch}) {
                     </span>
                   </div>
                 </div>
-                <button
-                  type="submit"
-                  className="block w-full rounded-lg bg-[#9DC08B] px-5 py-3 text-sm font-medium text-white"
-                >
-                  Buscar
-                </button>
               </form>
             </div>
           </div>

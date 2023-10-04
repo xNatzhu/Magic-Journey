@@ -1,10 +1,13 @@
 import React from 'react';
 import FormLogin from '../components/login/FormLogin.jsx';
 import Slider from '../components/login/Slider.jsx';
+import Loading from '../components/loading/Loading.jsx';
 
 function Login() {
 
   return (
+    <>
+    <Loading/>
     <div className="min-h-screen flex items-stretch text-white">
         <Slider/>
       <div className="lg:w-1/2 w-full flex items-center justify-center text-center md:px-16 px-0 z-0 bg-[#161616]">
@@ -28,6 +31,7 @@ function Login() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { get_itinerary } from "../store/actions/itinerary.js";
 import "./css/Detail.css";
 import  Menu  from "../components/city/Menu.jsx";
+import Loading from "../components/loading/Loading.jsx";
 
 export default function Detail() {
   const { id } = useParams();
@@ -54,6 +55,7 @@ export default function Detail() {
 
   return (
     <>
+      <Loading/>
       <div style={{ backgroundImage: `url(${city.img})` }}>
         <div className="background-slider pt-[30px]">
           <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:px-12 lg:px-24 lg:py-24">

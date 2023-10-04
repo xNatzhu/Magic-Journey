@@ -3,6 +3,7 @@ import {get_city}  from "../store/actions/city.js"
 import { useEffect, useState } from "react";
 import CityCard from "../components/city/Card.jsx";
 import Form from "../components/search/Form.jsx";
+import Loading from '../components/loading/Loading.jsx';
 
 export default function Cities() {
     const dispatch = useDispatch();
@@ -32,6 +33,8 @@ export default function Cities() {
       setFilteredCities(cities); // Restaura la lista completa al borrar la búsqueda
     };
     return (
+      <>
+        <Loading/>
         <div className="pt-[80px] bg-[#212121]">
             <Form onSearch={onSearch} onClear={clearSearch}/>
             {filteredCities.map((city) => (
@@ -45,5 +48,6 @@ export default function Cities() {
                 />
             ))}
         </div>
+      </>
     );
 }
